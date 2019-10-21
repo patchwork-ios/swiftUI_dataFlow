@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71569804235E244E00EE6F38 /* TextFieldFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71569803235E244E00EE6F38 /* TextFieldFormatter.swift */; };
 		7188F3EC235B6D620027F0B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7188F3EB235B6D620027F0B4 /* AppDelegate.swift */; };
 		7188F3EE235B6D620027F0B4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7188F3ED235B6D620027F0B4 /* SceneDelegate.swift */; };
 		7188F3F0235B6D620027F0B4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7188F3EF235B6D620027F0B4 /* ContentView.swift */; };
 		7188F3F2235B6D650027F0B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7188F3F1235B6D650027F0B4 /* Assets.xcassets */; };
 		7188F3F5235B6D650027F0B4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7188F3F4235B6D650027F0B4 /* Preview Assets.xcassets */; };
 		7188F3F8235B6D650027F0B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7188F3F6235B6D650027F0B4 /* LaunchScreen.storyboard */; };
+		7188F400235BF71C0027F0B4 /* StateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7188F3FF235BF71C0027F0B4 /* StateTest.swift */; };
+		7188F402235BF8030027F0B4 /* BindingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7188F401235BF8030027F0B4 /* BindingTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		71569803235E244E00EE6F38 /* TextFieldFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldFormatter.swift; sourceTree = "<group>"; };
 		7188F3E8235B6D620027F0B4 /* swiftUI_dataFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftUI_dataFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7188F3EB235B6D620027F0B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7188F3ED235B6D620027F0B4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +28,8 @@
 		7188F3F4235B6D650027F0B4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7188F3F7235B6D650027F0B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7188F3F9235B6D650027F0B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7188F3FF235BF71C0027F0B4 /* StateTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateTest.swift; sourceTree = "<group>"; };
+		7188F401235BF8030027F0B4 /* BindingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +46,8 @@
 		7188F3DF235B6D620027F0B4 = {
 			isa = PBXGroup;
 			children = (
+				7188F401235BF8030027F0B4 /* BindingTest.swift */,
+				71569803235E244E00EE6F38 /* TextFieldFormatter.swift */,
 				7188F3EA235B6D620027F0B4 /* swiftUI_dataFlow */,
 				7188F3E9235B6D620027F0B4 /* Products */,
 			);
@@ -59,6 +67,7 @@
 				7188F3EB235B6D620027F0B4 /* AppDelegate.swift */,
 				7188F3ED235B6D620027F0B4 /* SceneDelegate.swift */,
 				7188F3EF235B6D620027F0B4 /* ContentView.swift */,
+				7188F3FF235BF71C0027F0B4 /* StateTest.swift */,
 				7188F3F1235B6D650027F0B4 /* Assets.xcassets */,
 				7188F3F6235B6D650027F0B4 /* LaunchScreen.storyboard */,
 				7188F3F9235B6D650027F0B4 /* Info.plist */,
@@ -146,9 +155,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7188F402235BF8030027F0B4 /* BindingTest.swift in Sources */,
 				7188F3EC235B6D620027F0B4 /* AppDelegate.swift in Sources */,
+				71569804235E244E00EE6F38 /* TextFieldFormatter.swift in Sources */,
 				7188F3EE235B6D620027F0B4 /* SceneDelegate.swift in Sources */,
 				7188F3F0235B6D620027F0B4 /* ContentView.swift in Sources */,
+				7188F400235BF71C0027F0B4 /* StateTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
