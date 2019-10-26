@@ -16,6 +16,7 @@
 		7188F3F8235B6D650027F0B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7188F3F6235B6D650027F0B4 /* LaunchScreen.storyboard */; };
 		7188F400235BF71C0027F0B4 /* StateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7188F3FF235BF71C0027F0B4 /* StateTest.swift */; };
 		7188F402235BF8030027F0B4 /* BindingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7188F401235BF8030027F0B4 /* BindingTest.swift */; };
+		71AA09D0235FAE5500A3BAE0 /* EnvironmentTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA09CF235FAE5500A3BAE0 /* EnvironmentTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		7188F3F9235B6D650027F0B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7188F3FF235BF71C0027F0B4 /* StateTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateTest.swift; sourceTree = "<group>"; };
 		7188F401235BF8030027F0B4 /* BindingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingTest.swift; sourceTree = "<group>"; };
+		71AA09CF235FAE5500A3BAE0 /* EnvironmentTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				7188F3EB235B6D620027F0B4 /* AppDelegate.swift */,
 				7188F3ED235B6D620027F0B4 /* SceneDelegate.swift */,
 				7188F3EF235B6D620027F0B4 /* ContentView.swift */,
+				71AA09CF235FAE5500A3BAE0 /* EnvironmentTest.swift */,
 				7188F3FF235BF71C0027F0B4 /* StateTest.swift */,
 				7188F3F1235B6D650027F0B4 /* Assets.xcassets */,
 				7188F3F6235B6D650027F0B4 /* LaunchScreen.storyboard */,
@@ -155,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71AA09D0235FAE5500A3BAE0 /* EnvironmentTest.swift in Sources */,
 				7188F402235BF8030027F0B4 /* BindingTest.swift in Sources */,
 				7188F3EC235B6D620027F0B4 /* AppDelegate.swift in Sources */,
 				71569804235E244E00EE6F38 /* TextFieldFormatter.swift in Sources */,

@@ -36,29 +36,32 @@ struct BindingTest: View {
     @ObservedObject var observedItem = item0
     @State private var arrayItem = [item0]
 
-//    @ObservedObject var observedArrayItem = [item0] // Does not compile because Array doesn't conform to `ObservedObject`.
+//    @ObservedObject var observedArrayItem = [item0] // Does not compile because Array doesn't conform to `ObservedObject`. The solution to this is MVVM (See `mvvmObservedObject`)
     init() {
     }
     var body: some View {
-        VStack {
-            Spacer()
-            // I made the subViews variables instead of declaring them here so it is easier to comment out one or the other. I got into a stat where when they were all visible they all acted the same way... so this makes it so you can validate behavior by commenting out all but one, or all but two, etc.
-            bindingSubview // ❌
-            stateArrayBinding // ❌ ✅
-            observedObjectBinding // ✅
-            publishedBinding // ✅
-            mvvmObservedObject // 😇 ✅
-            environmentBinding
-            Spacer()
-            HStack {
-                Text("Source of Truth").bold()
-                Text(item0.amount).bold()
+        ScrollView {
+            VStack {
+                Spacer()
+                // I made the subViews variables instead of declaring them here so it is easier to comment out one or the other. I got into a state where when they were all visible they all acted the same way... so this makes it so you can validate behavior by commenting out all but one, or all but two, etc.
+                HStack {
+                    Text("Source of Truth").font(.title)
+                    Text(item0.amount).font(.title)
+                }
+                Spacer(minLength: 24)
+                bindingSubview // ❌
+                stateArrayBinding // ❌ ✅
+                observedObjectBinding // ✅
+                publishedBinding // ✅
+                mvvmObservedObject // 😇 ✅
+                environmentBinding // ✅
+
             }
         }
         .padding()
             // if you want some fun colors, then you can uncomment this gradient:
 //            .background(LinearGradient(gradient: Gradient(colors: [.blue, .yellow, .green]), startPoint: .topLeading, endPoint: .bottomTrailing))
-        .edgesIgnoringSafeArea(.all)
+//        .edgesIgnoringSafeArea(.all)
     }
 
     
@@ -101,10 +104,10 @@ struct BindingTest: View {
         }
     }
     
-    /// MVVM is a design pattern: `View -> ViewModel -> Model`. It essentially means each View has a ViewModel class that it references and that ViewModel class conforms to `ObservableObject`. Every variable the View needs will exist on this ViewModel as `@Published var`s. This design pattern lends itself very well to SwiftUI because of some of the funkiness of when you can use `@Binding` vs `@ObservedObject` vs `@State` (like for an array of `ObservableObject`s).
+    /// MVVM is a design pattern: `Model -> ViewModel(container for all Model objects) -> View`. It essentially means each View has a ViewModel class that it references and that ViewModel class conforms to `ObservableObject`. Every `Model` object variable the View needs will exist on this ViewModel as `@Published var`s. This design pattern lends itself very well to SwiftUI because of some of the funkiness of when you can use `@Binding` vs `@ObservedObject` vs `@State` (like for an array of `ObservableObject`s).
     var mvvmObservedObject: some View {
         VStack {
-            Text("MVVM: @ObservedObject to a view-specific ViewModel object.")
+            Text("\nMVVM: @ObservedObject to a view-specific ViewModel object.")
                 .bold().multilineTextAlignment(.center)
             MVVMObservedObjectSubView(model: MVVMObservedObjectViewModel(item: item0))
         }
@@ -115,7 +118,7 @@ struct BindingTest: View {
     /// NOTE: You can add an environment variable to the first view by adding it to the initial View created in the Scene Delegate's `...willConnectTo...` method.
     var environmentBinding: some View {
         VStack {
-            Text("@EnvironmentObject binding to an ObservableObject")
+            Text("\n@EnvironmentObject binding to an ObservableObject")
                 .bold().multilineTextAlignment(.center)
             EnvironmentObjectBindingView()
                 .environmentObject(item0)
@@ -130,21 +133,7 @@ struct BindingTest: View {
 struct BindingSubView: View {
     @Binding var item: BudgetItem
     var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                Text("TextField:")
-                TextField("title", text: $item.amount).frame(width: 50, height: 30, alignment: .center)
-                    .background(Color.init(white: 0.98))
-                Spacer()
-            }
-            HStack {
-                Spacer()
-                Text("Label")
-                Text(item.amount)
-                Spacer()
-            }
-        }
+        LayoutView(nameTextField: TextField("name placeholder", text: $item.name), amountTextField: TextField("amount placeholder", text: $item.amount), nameText: Text(item.name), amountText: Text(item.amount))
     }
 }
 
@@ -154,21 +143,7 @@ struct BindingSubView: View {
 struct ObservedObjectSubView: View {
     @ObservedObject var item: BudgetItem
     var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                Text("TextField:")
-                TextField("title", text: $item.amount).frame(width: 50, height: 30, alignment: .center)
-                .background(Color.init(white: 0.98))
-                Spacer()
-            }
-            HStack {
-                Spacer()
-                Text("Label")
-                Text(item.amount)
-                Spacer()
-            }
-        }
+        LayoutView(nameTextField: TextField("name placeholder", text: $item.name), amountTextField: TextField("amount placeholder", text: $item.amount), nameText: Text(item.name), amountText: Text(item.amount))
     }
 }
 
@@ -177,23 +152,9 @@ struct ObservedObjectSubView: View {
 
 struct BindingFromObservedObjectSubView: View {
     @Binding var amount: String
-    @Binding var name: String // not used, but to emphasise how much of a pain this option could be with a lot of published properties on an object.
+    @Binding var name: String // this can be a pain this option could be with a lot of published properties on an object.
     var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                Text("TextField:")
-                TextField("title", text: $amount).frame(width: 50, height: 30, alignment: .center)
-                .background(Color.init(white: 0.98))
-                Spacer()
-            }
-            HStack {
-                Spacer()
-                Text("Label")
-                Text(amount)
-                Spacer()
-            }
-        }
+        LayoutView(nameTextField: TextField("name placeholder", text: $name), amountTextField: TextField("amount placeholder", text: $amount), nameText: Text(name), amountText: Text(amount))
     }
 }
 
@@ -215,21 +176,7 @@ class MVVMObservedObjectViewModel: ObservableObject {
 struct MVVMObservedObjectSubView: View {
     @ObservedObject var model: MVVMObservedObjectViewModel
     var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                Text("TextField:")
-                TextField("title", text: $model.item.amount).frame(width: 50, height: 30, alignment: .center)
-                .background(Color.init(white: 0.98))
-                Spacer()
-            }
-            HStack {
-                Spacer()
-                Text("Label")
-                Text(model.item.name)
-                Spacer()
-            }
-        }
+        LayoutView(nameTextField: TextField("name placeholder", text: $model.item.name), amountTextField: TextField("amount placeholder", text: $model.item.amount), nameText: Text(model.item.name), amountText: Text(model.item.amount))
     }
 }
 
@@ -250,28 +197,10 @@ struct EnvironmentBindingSubView: View {
     @EnvironmentObject var item1: BudgetItem
 
     var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                Text("TextField:")
-                TextField("title", text: $item.amount).frame(width: 50, height: 30, alignment: .center)
-                .background(Color.init(white: 0.98))
-                Spacer()
-            }
-            HStack {
-                Spacer()
-                Text("Label")
-                Text(item.name)
-                Spacer()
-            }
-            // This returns the same text as `item.name` so I'm leaving it commented out for cleanliness... 😢
-//            HStack {
-//                Spacer()
-//                Text("Label")
-//                Text(item1.name)
-//                Spacer()
-//            }
-        }
+        LayoutView(nameTextField: TextField("name placeholder", text: $item.name), amountTextField: TextField("amount placeholder", text: $item.amount), nameText: Text(item.name), amountText: Text(item.amount))
+        // Using `item1 instead of item yeilds the same result... 😢 so I'm commenting it out for cleanliness
+//        LayoutView(nameTextField: TextField("name placeholder", text: $item1.name), amountTextField: TextField("amount placeholder", text: $item1.amount), nameText: Text(item1.name), amountText: Text(item1.amount))
+
     }
 }
 
@@ -281,5 +210,45 @@ struct EnvironmentBindingSubView: View {
 struct BindingTest_Previews: PreviewProvider {
     static var previews: some View {
         BindingTest()
+    }
+}
+
+struct LayoutView: View {
+    var nameTextField: TextField<Text>
+    var amountTextField: TextField<Text>
+    var nameText: Text
+    var amountText: Text
+    var latestTimeViewWasRendered: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "s:S"
+        return formatter.string(from: Date())
+    }
+
+    var body: some View {
+        VStack {
+            HStack {
+                Spacer()
+                Text("TextFields: ").italic()
+                nameTextField
+                    .frame(width: 100, height: 30, alignment: .center)
+                    .background(Color.init(white: 0.98))
+                    .multilineTextAlignment(.center)
+                amountTextField
+                    .frame(width: 100, height: 30, alignment: .center)
+                    .background(Color.init(white: 0.98))
+                    .multilineTextAlignment(.center)
+                Spacer()
+            }
+            HStack {
+                Spacer()
+                Text("Labels:").italic()
+                nameText
+                .frame(width: 100, height: 30, alignment: .center)
+                amountText
+                .frame(width: 100, height: 30, alignment: .center)
+                Spacer()
+            }
+//            Text(latestTimeViewWasRendered) // Uncomment this to see which Views are being updated at the same time.
+        }
     }
 }
