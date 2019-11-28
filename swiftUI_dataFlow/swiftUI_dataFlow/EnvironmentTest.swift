@@ -10,6 +10,8 @@ import SwiftUI
 
 class SubSubViewModel: ObservableObject {
     @Published var cost: Int
+    @Published var isBlue: Bool = true
+
     init(cost: Int) {
         self.cost = cost
     }
@@ -27,7 +29,6 @@ class MainModel: SubViewModel {
     @Published var date: Date
     @Published var name: String
     
-    
     init(name: String, amount: Double, date: Date, cost: Int) {
         self.name = name
         self.date = date
@@ -36,9 +37,11 @@ class MainModel: SubViewModel {
 }
 
 struct EnvironmentTest: View {
-    
+    @EnvironmentObject var model: MainModel
+
     var body: some View {
         List {
+            Text(model.name).foregroundColor(model.isBlue ? .blue : .black)
             ButtonThing()
         }
     }
@@ -49,15 +52,18 @@ struct ButtonThing: View {
     @State var isActive = true
     
     var body: some View {
-        NavigationLink(destination: SubView(), isActive: $isActive) {
-            VStack {
-                Text(model.date.description)
-                Text(model.name)
-                Text(model.amount.description)
-                Text(model.cost.description)
+        //        NavigationLink(destination: SubView(), isActive: $isActive) {
+        VStack {
+            Text(model.date.description)
+            TextField("", text: $model.name)
+            Text(model.amount.description)
+            Text(model.cost.description)
+            Toggle(isOn: $model.isBlue) {
+                Text("isBlue")
             }
         }
     }
+    //    }
 }
 
 struct SubView: View {

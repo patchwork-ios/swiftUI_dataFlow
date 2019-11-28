@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7121E4622370CADC004A18E5 /* UIViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121E4612370CADC004A18E5 /* UIViewRepresentable.swift */; };
+		71222B672368DB17003B273F /* LabelUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71222B662368DB17003B273F /* LabelUpdate.swift */; };
+		71492E6A238F2DBD00BE552D /* FormatterTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71492E69238F2DBD00BE552D /* FormatterTextField.swift */; };
+		714CA7B2238447C00023B70E /* CodableHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714CA7B1238447C00023B70E /* CodableHelper.swift */; };
 		71569804235E244E00EE6F38 /* TextFieldFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71569803235E244E00EE6F38 /* TextFieldFormatter.swift */; };
+		71660BFF2374CCBC0012A41A /* ForceUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71660BFE2374CCBC0012A41A /* ForceUpdateView.swift */; };
+		71671426236775E1007A5E02 /* CodableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71671425236775E1007A5E02 /* CodableTest.swift */; };
+		7174812F236C9C5B00F6FDC5 /* ObservableObjectSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7174812E236C9C5B00F6FDC5 /* ObservableObjectSubclass.swift */; };
+		71748176236D036F00F6FDC5 /* BindingAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71748175236D036F00F6FDC5 /* BindingAssignment.swift */; };
 		7188F3EC235B6D620027F0B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7188F3EB235B6D620027F0B4 /* AppDelegate.swift */; };
 		7188F3EE235B6D620027F0B4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7188F3ED235B6D620027F0B4 /* SceneDelegate.swift */; };
 		7188F3F0235B6D620027F0B4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7188F3EF235B6D620027F0B4 /* ContentView.swift */; };
@@ -16,11 +24,22 @@
 		7188F3F8235B6D650027F0B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7188F3F6235B6D650027F0B4 /* LaunchScreen.storyboard */; };
 		7188F400235BF71C0027F0B4 /* StateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7188F3FF235BF71C0027F0B4 /* StateTest.swift */; };
 		7188F402235BF8030027F0B4 /* BindingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7188F401235BF8030027F0B4 /* BindingTest.swift */; };
+		718982802364F264002A7D7B /* EnvironmentKeypath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7189827F2364F264002A7D7B /* EnvironmentKeypath.swift */; };
 		71AA09D0235FAE5500A3BAE0 /* EnvironmentTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA09CF235FAE5500A3BAE0 /* EnvironmentTest.swift */; };
+		71C488A22364DD8B00CEE30C /* ProtocolObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C488A12364DD8B00CEE30C /* ProtocolObservableObject.swift */; };
+		71E306A82390426200B82DC9 /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E306A72390426200B82DC9 /* NumberTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7121E4612370CADC004A18E5 /* UIViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewRepresentable.swift; sourceTree = "<group>"; };
+		71222B662368DB17003B273F /* LabelUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelUpdate.swift; sourceTree = "<group>"; };
+		71492E69238F2DBD00BE552D /* FormatterTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FormatterTextField.swift; path = ../FormatterTextField.swift; sourceTree = "<group>"; };
+		714CA7B1238447C00023B70E /* CodableHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CodableHelper.swift; path = ../CodableHelper.swift; sourceTree = "<group>"; };
 		71569803235E244E00EE6F38 /* TextFieldFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldFormatter.swift; sourceTree = "<group>"; };
+		71660BFE2374CCBC0012A41A /* ForceUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceUpdateView.swift; sourceTree = "<group>"; };
+		71671425236775E1007A5E02 /* CodableTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableTest.swift; sourceTree = "<group>"; };
+		7174812E236C9C5B00F6FDC5 /* ObservableObjectSubclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableObjectSubclass.swift; sourceTree = "<group>"; };
+		71748175236D036F00F6FDC5 /* BindingAssignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingAssignment.swift; sourceTree = "<group>"; };
 		7188F3E8235B6D620027F0B4 /* swiftUI_dataFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftUI_dataFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7188F3EB235B6D620027F0B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7188F3ED235B6D620027F0B4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,7 +50,10 @@
 		7188F3F9235B6D650027F0B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7188F3FF235BF71C0027F0B4 /* StateTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateTest.swift; sourceTree = "<group>"; };
 		7188F401235BF8030027F0B4 /* BindingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingTest.swift; sourceTree = "<group>"; };
+		7189827F2364F264002A7D7B /* EnvironmentKeypath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentKeypath.swift; sourceTree = "<group>"; };
 		71AA09CF235FAE5500A3BAE0 /* EnvironmentTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentTest.swift; sourceTree = "<group>"; };
+		71C488A12364DD8B00CEE30C /* ProtocolObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolObservableObject.swift; sourceTree = "<group>"; };
+		71E306A72390426200B82DC9 /* NumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumberTextField.swift; path = ../NumberTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +70,8 @@
 		7188F3DF235B6D620027F0B4 = {
 			isa = PBXGroup;
 			children = (
-				7188F401235BF8030027F0B4 /* BindingTest.swift */,
+				7174812E236C9C5B00F6FDC5 /* ObservableObjectSubclass.swift */,
+				71748175236D036F00F6FDC5 /* BindingAssignment.swift */,
 				71569803235E244E00EE6F38 /* TextFieldFormatter.swift */,
 				7188F3EA235B6D620027F0B4 /* swiftUI_dataFlow */,
 				7188F3E9235B6D620027F0B4 /* Products */,
@@ -68,9 +91,18 @@
 			children = (
 				7188F3EB235B6D620027F0B4 /* AppDelegate.swift */,
 				7188F3ED235B6D620027F0B4 /* SceneDelegate.swift */,
+				71C488A02364DD7400CEE30C /* Goods */,
+				71C488A12364DD8B00CEE30C /* ProtocolObservableObject.swift */,
+				714CA7B1238447C00023B70E /* CodableHelper.swift */,
+				71492E69238F2DBD00BE552D /* FormatterTextField.swift */,
+				71E306A72390426200B82DC9 /* NumberTextField.swift */,
+				71660BFE2374CCBC0012A41A /* ForceUpdateView.swift */,
+				71671425236775E1007A5E02 /* CodableTest.swift */,
 				7188F3EF235B6D620027F0B4 /* ContentView.swift */,
 				71AA09CF235FAE5500A3BAE0 /* EnvironmentTest.swift */,
+				7189827F2364F264002A7D7B /* EnvironmentKeypath.swift */,
 				7188F3FF235BF71C0027F0B4 /* StateTest.swift */,
+				71222B662368DB17003B273F /* LabelUpdate.swift */,
 				7188F3F1235B6D650027F0B4 /* Assets.xcassets */,
 				7188F3F6235B6D650027F0B4 /* LaunchScreen.storyboard */,
 				7188F3F9235B6D650027F0B4 /* Info.plist */,
@@ -85,6 +117,15 @@
 				7188F3F4235B6D650027F0B4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		71C488A02364DD7400CEE30C /* Goods */ = {
+			isa = PBXGroup;
+			children = (
+				7188F401235BF8030027F0B4 /* BindingTest.swift */,
+				7121E4612370CADC004A18E5 /* UIViewRepresentable.swift */,
+			);
+			path = Goods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,12 +200,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				71AA09D0235FAE5500A3BAE0 /* EnvironmentTest.swift in Sources */,
+				71222B672368DB17003B273F /* LabelUpdate.swift in Sources */,
 				7188F402235BF8030027F0B4 /* BindingTest.swift in Sources */,
 				7188F3EC235B6D620027F0B4 /* AppDelegate.swift in Sources */,
 				71569804235E244E00EE6F38 /* TextFieldFormatter.swift in Sources */,
+				71748176236D036F00F6FDC5 /* BindingAssignment.swift in Sources */,
+				7174812F236C9C5B00F6FDC5 /* ObservableObjectSubclass.swift in Sources */,
+				71492E6A238F2DBD00BE552D /* FormatterTextField.swift in Sources */,
 				7188F3EE235B6D620027F0B4 /* SceneDelegate.swift in Sources */,
+				714CA7B2238447C00023B70E /* CodableHelper.swift in Sources */,
+				718982802364F264002A7D7B /* EnvironmentKeypath.swift in Sources */,
+				71671426236775E1007A5E02 /* CodableTest.swift in Sources */,
 				7188F3F0235B6D620027F0B4 /* ContentView.swift in Sources */,
+				7121E4622370CADC004A18E5 /* UIViewRepresentable.swift in Sources */,
+				71E306A82390426200B82DC9 /* NumberTextField.swift in Sources */,
 				7188F400235BF71C0027F0B4 /* StateTest.swift in Sources */,
+				71660BFF2374CCBC0012A41A /* ForceUpdateView.swift in Sources */,
+				71C488A22364DD8B00CEE30C /* ProtocolObservableObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +354,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"swiftUI_dataFlow/Preview Content\"";
+				DEVELOPMENT_TEAM = P25YZ8RHNL;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = swiftUI_dataFlow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -321,6 +374,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"swiftUI_dataFlow/Preview Content\"";
+				DEVELOPMENT_TEAM = P25YZ8RHNL;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = swiftUI_dataFlow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
