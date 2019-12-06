@@ -88,7 +88,7 @@ struct NumberTextFieldRepresentable: UIViewRepresentable {
 
     func makeUIView(context: UIViewRepresentableContext<NumberTextFieldRepresentable>) -> UITextField {
         let textField = UITextField(frame: .zero)
-        textField.text = value.wrappedValue.stringValue
+//        textField.text = value.wrappedValue.stringValue
         textField.delegate = context.coordinator
         textField.addTarget(context.coordinator, action: #selector(context.coordinator.textChanged(_:)), for: .editingChanged)
         return textField

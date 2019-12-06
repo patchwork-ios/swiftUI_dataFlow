@@ -23,9 +23,19 @@ struct BindingWrapperConversion: View {
 }
 
 class Obj: ObservableObject {
-    @Published var str = "string"
-    @Published var dbl: Double = 199
-//    var objectWillChange = PassthroughSubject<Void, Never>()
+    var str = "string" {
+        didSet {
+            print("`Obj.str` was set")
+            objectWillChange.send()
+        }
+    }
+    var dbl: Double = 199 {
+        didSet {
+            print("`Obj.dbl` was set")
+            objectWillChange.send()
+        }
+    }
+    var objectWillChange = PassthroughSubject<Void, Never>()
     // variable that wraps the double and converts it to a string and updates the publisher with the publisher.didChange
     
 }
