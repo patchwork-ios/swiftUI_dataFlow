@@ -26,10 +26,12 @@ import SwiftUI
 //    }
 //}
 
+
+
 struct FormatterTextField_Previews: PreviewProvider {
-    @State static var num: Double = 100
+    @State static var obj = Obj()
     static var previews: some View {
-        FormatterTextFieldRepresentable(value: $num)
+        FormatterTextFieldRepresentable(value: $obj.dbl)
     }
 }
 
