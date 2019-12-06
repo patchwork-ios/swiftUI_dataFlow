@@ -29,23 +29,27 @@ import SwiftUI
 struct FormatterTextFieldRepresentableView: View {
     @ObservedObject var obj: Obj
     @State var isEditing: Bool = false
-    
+
     var body: some View {
         VStack {
-            FormatterTextFieldRepresentable(placeholder: "", isEditing: $isEditing, unformattedString: { () -> String in
-                return "\(self.obj.dbl)"
-            }, formattedString: { (stringToFormat) -> String in
-                return "Fancy!: \(self.obj.dbl)"
-            }, shouldAcceptChange: { (text) -> Bool in
-                return Double(text) != nil
-            }) { (stringValue) in
-                self.obj.dbl = Double(stringValue)!
-            }
-            Text(String(describing: isEditing))
+            FormatterTextFieldRepresentable(placeholder: "", number: { () -> NSNumber in
+                NSNumber(value: self.obj.dbl)
+            }, unformattedStringFormatter: {
+                let formatter = NumberFormatter()
+                formatter.numberStyle = NumberFormatter.Style.decimal
+                return formatter
+            }(), formattedTextFormatter: {
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .currency
+                return formatter
+            }()) { (number) in
+                self.obj.dbl = number.doubleValue
+            }.fixedSize(horizontal: false, vertical: true)
+            TextField("", text: $obj.str)
             Button(action: {
                 self.isEditing.toggle()
             }) { Text(self.isEditing ? "End Editing" : "Begin Editing") }
-        }
+        }.padding()
     }
 }
 
@@ -123,6 +127,20 @@ struct FormatterTextFieldRepresentable: UIViewRepresentable {
         
     init(placeholder: String, isEditing: Binding<Bool>? = nil,  unformattedString: @escaping (() -> String), formattedString: ((String) -> String)? = nil, shouldAcceptChange: @escaping ((String) -> Bool), updateBinding: @escaping ((String) -> Void)) {
         delegate = FormattingTextFieldDefaultDelegate(placeholder: placeholder, unformattedStringCompletion: unformattedString, formattedStringCompletion: formattedString, shouldAcceptChangeCompletion: shouldAcceptChange, updateBindingCompletion: updateBinding)
+        self.isEditing = isEditing
+    }
+    
+    init(placeholder: String, isEditing: Binding<Bool>? = nil, number: @escaping (() -> NSNumber), unformattedStringFormatter: NumberFormatter, formattedTextFormatter: NumberFormatter, updateBinding: @escaping ((NSNumber) -> Void)) {
+        delegate = FormattingTextFieldDefaultDelegate(placeholder: placeholder, unformattedStringCompletion: { () -> String in
+            return  unformattedStringFormatter.string(from: number()) ?? "error"
+        }, formattedStringCompletion: { (unformattedString) -> String in
+            return formattedTextFormatter.string(from: number()) ?? "error"
+        }, shouldAcceptChangeCompletion: { (newText) -> Bool in
+            return unformattedStringFormatter.number(from: newText) != nil
+        }, updateBindingCompletion: { (newText) in
+            guard let number = unformattedStringFormatter.number(from: newText) else { return }
+            updateBinding(number)
+        })
         self.isEditing = isEditing
     }
     
