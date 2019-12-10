@@ -21,7 +21,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        let contentView = FormatterTextFieldRepresentableView(obj: obj)
+//        let contentView = FormatterTextFieldRepresentableView(obj: obj)
+//        let contentView = BindingWrapperConversion(my: obj)
+        let contentView = VStack {
+            AnyTextField("", get: {
+                return "\(self.obj.dbl)"
+            }) { (newString) -> Bool in
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .percent
+                guard let newDbl = formatter.number(from: newString)?.doubleValue else { return false }
+                self.obj.dbl = newDbl
+                return true
+            }.background(Color.gray)
+            Text("\(self.obj.dbl)")
+        }
+
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

@@ -8,22 +8,22 @@
 
 import SwiftUI
 
-// Two issues:
-// 1. this doesn't allow for pretty formatting whilst the person is editing
-// 2. the StringConvertible isn't working. Should change to some sort of formatter class I guess...
-// Too bad we can't use Formatter and cast it as one of the "supported" formatters in order to change the value.
-// Maybe I just make a NumberTextField and then a separate DateTextField and don't make it as generic...
-
-
-
-//struct FormatterTextField<T: StringConvertible>: View {
-//    @Binding var value: T
-//    var textDidChange: ((String?) -> Void)?
-//
-//    var body: some View {
-//        Text("te")
-////        FormatterTextFieldRepresentable(value: $value, textDidChange: textDidChange)
+//class Obj: ObservableObject {
+//    var str = "string" {
+//        didSet {
+//            print("`Obj.str` was set")
+//            objectWillChange.send()
+//        }
 //    }
+//    var dbl: Double = 199 {
+//        didSet {
+//            print("`Obj.dbl` was set")
+//            objectWillChange.send()
+//        }
+//    }
+//    var objectWillChange = PassthroughSubject<Void, Never>()
+//    // variable that wraps the double and converts it to a string and updates the publisher with the publisher.didChange
+//
 //}
 
 struct FormatterTextFieldRepresentableView: View {
@@ -32,11 +32,12 @@ struct FormatterTextFieldRepresentableView: View {
 
     var body: some View {
         VStack {
-            FormatterTextFieldRepresentable(placeholder: "", number: { () -> NSNumber in
+            FormatterTextFieldRepresentable(placeholder: "", isEditing: $isEditing, number: { () -> NSNumber in
                 NSNumber(value: self.obj.dbl)
             }, unformattedStringFormatter: {
                 let formatter = NumberFormatter()
                 formatter.numberStyle = NumberFormatter.Style.decimal
+                formatter.minimumFractionDigits = 2
                 return formatter
             }(), formattedTextFormatter: {
                 let formatter = NumberFormatter()
@@ -45,7 +46,6 @@ struct FormatterTextFieldRepresentableView: View {
             }()) { (number) in
                 self.obj.dbl = number.doubleValue
             }.fixedSize(horizontal: false, vertical: true)
-            TextField("", text: $obj.str)
             Button(action: {
                 self.isEditing.toggle()
             }) { Text(self.isEditing ? "End Editing" : "Begin Editing") }
@@ -231,12 +231,13 @@ struct FormatterTextFieldRepresentable: UIViewRepresentable {
         
         @objc func textChanged(_ textField: UITextField) {
             guard let text = textField.text, listenToChanges else { return }
-            delegate.updateBinding(from: text)
+//            delegate.updateBinding(from: text)
         }
         
         func textFieldDidEndEditing(_ textField: UITextField) {
             guard let text = textField.text, listenToChanges else { return }
             textField.text = delegate.formattedString(from: text)
+            delegate.updateBinding(from: text)
             isEditing?.wrappedValue = false
         }
     }
